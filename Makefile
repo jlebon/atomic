@@ -1,4 +1,4 @@
-# Installation directories.
+# Installation directories. 
 PREFIX ?= $(DESTDIR)/usr
 SYSCONFDIR ?= $(DESTDIR)/etc/sysconfig
 PROFILEDIR ?= $(DESTDIR)/etc/profile.d
