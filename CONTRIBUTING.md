@@ -1,4 +1,4 @@
-Submitting patches
+Submitting patches 
 ------------------
 
 Submit a pull request against <https://github.com/projectatomic/atomic>.
