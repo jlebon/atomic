@@ -3,54 +3,14 @@ branches:
   - master
 
 host:
-  distro: fedora/24/cloud
+  distro: centos/7/cloud
+
+extra-repos:
+  - name: centos-continuous
+    baseurl: https://ci.centos.org/artifacts/sig-atomic/rdgo/centos-continuous/build/
 
 packages:
-  - make
-#  - git
-#  - python
-#  - libffi-devel
-#  - python-devel
-#  - libselinux-python
-#  - ostree-devel
-#  - python-gobject-base
-#  - pylint
-#  - golang-github-cpuguy83-go-md2man
-#  - redhat-rpm-config
-#  - gcc
-#  - PyYAML
-#  - python-dbus
-#  - python-docker-py
-#  - rpm-python
-#  - docker
-#  - skopeo
-#  - python-slip-dbus
-#  - gcc-go
-#  - python3-pylint
-#  - python3-dbus
-#  - python3-slip-dbus
-#  - python3-docker-py
-#  - python3-gobject-base
-#  - python3-dateutil
-#  - python2-coverage
-#  - attr
-#  - runc
-
-context: 'other context'
+  - skopeo
 
 tests:
-  - echo hello > tests.log
-  - mkdir test_dir
-  - echo world > test_dir/asdf.log
-  - mkdir test_dir2
-  - echo asdf > test_dir2/nested.log
-  #  - pip install -r requirements.txt
-  #  - systemctl start docker
-  #  - make
-  #  - make install
-  #  - make test
-
-artifacts:
-  - tests.log
-  - test_dir
-  - test_dir2/nested.log
+  - rpm -q skopeo
