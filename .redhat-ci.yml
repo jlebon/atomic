@@ -5,8 +5,8 @@ branches:
 host:
   distro: fedora/24/cloud
 
-#packages:
-#  - make
+packages:
+  - make
 #  - git
 #  - python
 #  - libffi-devel
@@ -36,7 +36,7 @@ host:
 #  - attr
 #  - runc
 
-context: 'My custom context'
+context: 'other context'
 
 tests:
   - echo hello > tests.log
