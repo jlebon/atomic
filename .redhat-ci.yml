@@ -9,6 +9,7 @@ extra-repos:
   - name: centos-continuous
     baseurl: https://ci.centos.org/artifacts/sig-atomic/rdgo/centos-continuous/build/
     gpgcheck: 0
+    enabled: 1
 
 packages:
   - skopeo
