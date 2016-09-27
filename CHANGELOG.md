@@ -1,4 +1,4 @@
-## 1.12 (2016-9-7)
+## 1.12 (2016-9-7) 
 Fixes for syscontainers
 Add atomic images generate to generate mtree meta data
 Fix up atomic with overlay backend
