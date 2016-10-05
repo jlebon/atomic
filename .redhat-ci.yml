@@ -15,7 +15,7 @@ tests:
   - mkdir dir
   - echo "zxcv" > dir/file.log
 
-timeout: 20s
+timeout: 5s
 
 artifacts:
   - file.log
