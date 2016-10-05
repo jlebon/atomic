@@ -8,3 +8,10 @@ host:
 
 tests:
   - echo hello world
+  - echo "asdf" > file
+  - mkdir dir
+  - echo "zxcv" > dir/file
+
+artifacts:
+  - file
+  - dir
