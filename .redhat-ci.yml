@@ -1,18 +1,10 @@
 branches:
   - nonexistent-branch
   - master
+  - jlebon-patch-7
 
 host:
-  distro: centos/7/cloud
-
-extra-repos:
-  - name: centos-continuous
-    baseurl: https://ci.centos.org/artifacts/sig-atomic/rdgo/centos-continuous/build/
-    gpgcheck: 0
-    enabled: 1
-
-packages:
-  - skopeo
+  distro: fedora/24/cloud
 
 tests:
-  - rpm -q skopeo
+  - echo hello world
