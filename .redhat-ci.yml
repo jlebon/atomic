@@ -4,7 +4,13 @@ branches:
   - jlebon-patch-7
 
 host:
-  distro: fedora/24/cloud
+  distro: centos/7/cloud
+
+context: 'My context'
+
+packages:
+  - make
+  - gcc
 
 tests:
   - echo hello world
