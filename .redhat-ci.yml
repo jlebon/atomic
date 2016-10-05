@@ -8,15 +8,14 @@ host:
 
 context: 'My context'
 
-packages:
-  - make
-  - gcc
-
 tests:
+  - sleep 10
   - echo hello world
   - echo "asdf" > file.log
   - mkdir dir
   - echo "zxcv" > dir/file.log
+
+timeout: 20s
 
 artifacts:
   - file.log
