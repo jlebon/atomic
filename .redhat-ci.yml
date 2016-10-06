@@ -1,0 +1,17 @@
+branches:
+  - master
+  - jlebon-patch-8
+
+container:
+  image: fedora:24
+
+tests:
+  - echo "hello world" > tests.log
+  - mkdir mydir
+  - echo "asdf" > mydir/asdf.log
+
+timeout: 10s
+
+artifacts:
+  - tests.log
+  - mydir
