@@ -1,17 +1,17 @@
 branches:
   - master
-  - jlebon-patch-8
 
-container:
-  image: fedora:24
+host:
+  distro: fedora/24/atomic
 
 tests:
-  - echo "hello world" > tests.log
-  - mkdir mydir
-  - echo "asdf" > mydir/asdf.log
-
-timeout: 10s
+  - ostree admin unlock
+  - >
+      docker run --privileged
+      -v /root:/root -v $PWD:/code -v /:/host
+      --workdir /code fedora:24 ./rhci.sh
+      #- ENABLE_DESTRUCTIVE=1 ./test.sh
+  - ./test.sh
 
 artifacts:
   - tests.log
-  - mydir
