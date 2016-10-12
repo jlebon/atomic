@@ -698,8 +698,7 @@ class SystemContainers(object):
         try:
             is_failed = self._systemctl_command("is-failed", name, quiet=True).replace("\n", "")
         except subprocess.CalledProcessError as e:
-            enc = sys.getdefaultencoding()
-            is_failed = e.output.decode(enc)
+            is_failed = e.output.decode('utf-8')
             if is_failed.replace("\n", "") != "inactive":
                 return True
 
@@ -712,8 +711,7 @@ class SystemContainers(object):
             try:
                 status = self._systemctl_command("status", name, quiet=True)
             except subprocess.CalledProcessError as e:
-                enc = sys.getdefaultencoding()
-                status = e.output.decode(enc)
+                status = e.output.decode('utf-8')
             if 'FAILURE' in status:
                 return True
             else:
@@ -747,8 +745,7 @@ class SystemContainers(object):
         if not quiet:
             util.write_out(" ".join(cmd))
         if not self.display:
-            enc = sys.getdefaultencoding()
-            return util.check_output(cmd, stderr=DEVNULL).decode(enc)
+            return util.check_output(cmd, stderr=DEVNULL).decode('utf-8')
         return None
 
     def get_checkout(self, name):
