@@ -342,11 +342,8 @@ class SystemContainers(object):
                     sysroot = OSTree.Sysroot()
                     sysroot.load()
                     osname = sysroot.get_booted_deployment().get_osname()
-                    print("destination is", destination)
                     destination = os.path.join("/ostree/deploy/", osname, os.path.relpath(destination, "/"))
-                    print("destination is now", destination)
                     destination = os.path.realpath(destination)
-                    print("destination is now2", destination)
                 except: #pylint: disable=bare-except
                     pass
             rootfs = os.path.join(destination, "rootfs")
