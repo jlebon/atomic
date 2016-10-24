@@ -18,7 +18,7 @@ else
   PYTHON=python
 fi
 
-DOCKER_RUN="docker run \
+DOCKER_RUN="docker run --rm \
               --privileged \
               -v $PWD:/code \
               -v /:/host \
