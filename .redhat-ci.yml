@@ -1,44 +1,61 @@
-branches:
-  - master
-  - auto
-  - try
-
-host:
-  distro: fedora/24/atomic
-
-context: fedora/24/atomic
+container:
+  image: fedora:24
 
 tests:
-  - ./.redhat-ci.sh
+  - "true"
 
-artifacts:
-  - tests.log
-
-timeout: 30m
+context: mycontext
 
 ---
 
 inherit: true
 
-host:
-  distro: centos/7/atomic
-  ostree: # explicitly rebase to continuous until we set up a distro stream for it
-    remote: https://ci.centos.org/artifacts/sig-atomic/rdgo/centos-continuous/ostree/repo/
-    branch: centos-atomic-host/7/x86_64/devel/continuous
+context: myothercontext
 
-context: centos/7/atomic
+tests:
+  - "true"
 
----
-
-inherit: true
-
-host:
-  distro: fedora/24/cloud
-
-context: fedora/24/cloud
-
-# we install atomic to get the runtime reqs but of course,
-# its files will get overwritten by the containerized build
-packages:
-  - atomic
-  - python3-coverage
+#branches:
+#  - master
+#  - auto
+#  - try
+#
+#host:
+#  distro: fedora/24/atomic
+#
+#context: fedora/24/atomic
+#
+#tests:
+#  - ./.redhat-ci.sh
+#
+#artifacts:
+#  - tests.log
+#
+#timeout: 30m
+#
+#---
+#
+#inherit: true
+#
+#host:
+#  distro: centos/7/atomic
+#  ostree: # explicitly rebase to continuous until we set up a distro stream for it
+#    remote: https://ci.centos.org/artifacts/sig-atomic/rdgo/centos-continuous/ostree/repo/
+#    branch: centos-atomic-host/7/x86_64/devel/continuous
+#
+#context: centos/7/atomic
+#
+#---
+#
+#inherit: true
+#
+#host:
+#  distro: fedora/24/cloud
+#
+#context: fedora/24/cloud
+#
+## we install atomic to get the runtime reqs but of course,
+## its files will get overwritten by the containerized build
+#packages:
+#  - atomic
+#  - python3-coverage
