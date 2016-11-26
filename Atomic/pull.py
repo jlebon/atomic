@@ -3,7 +3,7 @@ try:
 except ImportError:
     from atomic import Atomic  # pylint: disable=relative-import
 from .trust import Trust
-from .util import skopeo_copy, get_atomic_config, Decompose, write_out, strip_port, is_insecure_registry
+from .util import skopeo_copy, get_atomic_config, Decompose, write_out, strip_port, is_insecure_registry, check_call
 
 ATOMIC_CONFIG = get_atomic_config()
 
@@ -38,19 +38,23 @@ class Pull(Atomic):
         #     pull_uri = 'atomic:'
         # else:
         #     pull_uri = 'docker://'
-        fq_name = self.get_fq_image_name(self.args.image)
-        registry, _, _, tag, _ = Decompose(fq_name).all
-        image = "docker-daemon:{}".format(self.args.image)
-        if not self.args.image.endswith(tag):
-            image += ":{}".format(tag)
-        insecure = True if is_insecure_registry(self.d.info()['RegistryConfig'], strip_port(registry)) else False
-        trust = Trust()
-        trust.set_args(self.args)
-        trust.discover_sigstore(fq_name)
-        write_out("Pulling {} ...".format(fq_name))
-        skopeo_copy("docker://{}".format(fq_name), image,
-                    debug=self.args.debug, insecure=insecure,
-                    policy_filename=self.policy_filename)
+        if self.args.image.startswith("dockertar:"):
+            path = self.args.image.replace("dockertar:", "", 1)
+            check_call(["docker", "load", "-i", path])
+        else: # assume decomposable fqin
+            fq_name = self.get_fq_image_name(self.args.image)
+            registry, _, _, tag, _ = Decompose(fq_name).all
+            image = "docker-daemon:{}".format(self.args.image)
+            if not self.args.image.endswith(tag):
+                image += ":{}".format(tag)
+            insecure = True if is_insecure_registry(self.d.info()['RegistryConfig'], strip_port(registry)) else False
+            trust = Trust()
+            trust.set_args(self.args)
+            trust.discover_sigstore(fq_name)
+            write_out("Pulling {} ...".format(fq_name))
+            skopeo_copy("docker://{}".format(fq_name), image,
+                        debug=self.args.debug, insecure=insecure,
+                        policy_filename=self.policy_filename)
 
     def pull_image(self):
         handlers = {
