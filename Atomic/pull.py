@@ -3,7 +3,7 @@ try:
 except ImportError:
     from atomic import Atomic  # pylint: disable=relative-import
 from .trust import Trust
-from .util import skopeo_copy, get_atomic_config, Decompose, write_out, strip_port, is_insecure_registry, check_call
+from .util import skopeo_copy, get_atomic_config, Decompose, write_out, strip_port, is_insecure_registry
 
 ATOMIC_CONFIG = get_atomic_config()
 
