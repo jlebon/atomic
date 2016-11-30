@@ -40,7 +40,8 @@ class Pull(Atomic):
         #     pull_uri = 'docker://'
         if self.args.image.startswith("dockertar:"):
             path = self.args.image.replace("dockertar:", "", 1)
-            check_call(["docker", "load", "-i", path])
+            with open(path, 'rb') as f:
+                self.d.load_image(data=f)
         else: # assume decomposable fqin
             fq_name = self.get_fq_image_name(self.args.image)
             registry, _, _, tag, _ = Decompose(fq_name).all
