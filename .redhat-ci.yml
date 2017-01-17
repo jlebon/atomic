@@ -11,7 +11,7 @@ context: fedora/24/atomic
 required: true
 
 env:
-  ENABLE_DESTRUCTIVE: yes
+  ENABLE_DESTRUCTIVE: "1"
 
 tests:
   - ./.redhat-ci.sh
