@@ -5,6 +5,8 @@ branches:
 
 host:
   distro: fedora/24/atomic
+  specs:
+    ephemeral: 10
 
 context: fedora/24/atomic
 
@@ -27,6 +29,8 @@ inherit: true
 
 host:
   distro: fedora/25/atomic
+  specs:
+    ephemeral: 10
 
 context: fedora/25/atomic
 
@@ -36,6 +40,8 @@ inherit: true
 
 host:
   distro: centos/7/atomic/continuous
+  specs:
+    ephemeral: 10
 
 context: centos/7/atomic
 
@@ -45,6 +51,8 @@ inherit: true
 
 host:
   distro: fedora/25/cloud
+  specs:
+    ephemeral: 10
 
 context: fedora/25/cloud
 
