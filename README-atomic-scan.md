@@ -1,4 +1,4 @@
-% Brent Baude  
+% Brent Baude   
 % August 2016 
 
 # Atomic Scan JSON specification
