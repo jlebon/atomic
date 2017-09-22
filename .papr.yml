@@ -16,7 +16,7 @@ env:
   ENABLE_DESTRUCTIVE: "1"
 
 tests:
-  - ./.papr.sh
+  - echo "hello world"
 
 artifacts:
   - tests.log
