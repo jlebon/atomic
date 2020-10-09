@@ -1,3 +1,8 @@
+# ⚠️⚠️⚠️ THIS PROJECT IS NO LONGER MAINTAINED. ⚠️⚠️⚠️
+# DEVELOPMENT HAS MOVED TO PODMAN: https://github.com/containers/libpod
+
+---
+
 # Atomic: /usr/bin/atomic
 
 This project defines the entrypoint for Project Atomic hosts.  On an
